@@ -1,0 +1,231 @@
+/* GENERAL */
+body {
+    font-family: Arial, sans-serif; 
+    text-align: center;            
+    background-color: #45a6cc;     
+    padding: 20px;                
+    color: white;                 
+}
+
+/* BUTTON STYLING */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* CONTAINER FOR LANE BUTTONS */
+#lanesContainer {
+    display: flex;
+   
+    /* Stack lanes vertically */
+    flex-direction: column;
+    
+    /* Center lanes horizontally */
+    align-items: center;   
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* LANE STYLING */
+.lane {
+    width: 200px;
+    height: 50px;
+
+    /* Green if available */
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Red background if lane is occupied or closed */
+.lane.occupied, .lane.closed {
+    background-color: red;
+}
+
+/* CLOSED LANE BUTTONS (SETTINGS PAGE) */
+#closedLanesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Styling for close lane buttons */
+#closedLanesContainer button {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* HOME BUTTON ICON */
+#homeButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#homeButton img {
+    width: 40px;
+    height: auto;
+}
+
+/* SETTINGS BUTTON ICON */
+#settingsButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#settingsButton img {
+    width: 40px;
+    height: auto;
+}
+
+/* TOGGLE SWITCH STYLING */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Toggle slider background */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 25px;
+}
+
+/* Circle inside the toggle */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* When the toggle is ON */
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+/* Move circle to the right when ON */
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
+/* TIMER DISPLAY INSIDE LANE */
+.timer {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Hidden timer class (when toggle is ON) */
+.timer.hidden {
+    visibility: hidden;
+}
+
+/* WAITLIST BUTTON ICON */
+#waitlistButton {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#waitlistButton img {
+    width: 40px;
+    height: auto;
+}
+
+/* WAITLIST INPUT */
+#waitlistModal input[type="text"] {
+    margin: 5px 0;
+    padding: 6px;
+    width: 80%;
+}
+
+/* MODAL STYLING */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Dimmed background */
+}
+
+/* INSIDE THE MODAL */
+.modal-content {
+    background-color: white;
+    color: #45a6cc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+/* CLOSE BUTTON (X) INSIDE MODAL */
+.modal-content .close {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* WAITLIST LIST DISPLAY */
+#waitlistContainer {
+    list-style-type: decimal;
+    padding-left: 20px;
+    text-align: left;
+    margin: 15px 0;
+}

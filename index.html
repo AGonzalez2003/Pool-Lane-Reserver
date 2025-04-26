@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lane Reservation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <header>
+        <h1>Swimming Lane Reservation</h1>
+        
+        <!-- Settings button with image -->
+        <button id="settingsButton" onclick="showSettingsPage()">
+            <img src="settingImage.jpeg" alt="Settings" class="settings-icon">
+        </button>
+       
+        <!-- Waitlist button with image -->
+        <button id="waitlistButton" onclick="showWaitlistPage()">
+            <img src="waitlistImage.png" alt="Waitlist" class="waitlist-icon">
+        </button>      
+    </header>
+    
+    <!-- Main view showing available lanes -->
+    <main id="mainPage">
+        <h2>Available Lanes</h2>
+       <!-- Renders lanes here -->
+        <div id="lanesContainer"></div>
+    </main>
+    
+    <!-- Settings view for admin -->
+    <section id="settingsPage" style="display: none;">
+        <h2>Settings</h2>
+        <button id="homeButton" onclick="showMainPage()">
+            <img src="homebtn2-removebg-preview.png" alt="Home" class="home-icon">
+        </button>
+
+        <!-- Set number of lanes -->
+        <label for="numberOfLanes">Number of Lanes:</label>
+        <input type="number" id="numberOfLanes" min="1">
+        <button onclick="updateLanes()">Confirm</button>
+
+        <!-- Section for closing lanes -->
+        <h3>Closed Lanes</h3>
+        <div id="closedLanesContainer"></div>
+
+        <!-- Set time limit -->
+        <h3>Timer Settings</h3>
+        <div style="margin-bottom: 10px;">
+            <label for="timeLimit">Set Time Limit (minutes):</label>
+            <input type="number" id="timeLimit" min="1" value="30">
+            <button onclick="confirmTimeLimit()">Confirm</button>
+        </div>
+
+        <!-- Reset all lanes and toggle timer visibility -->
+        <div style="margin-bottom: 20px;">
+            <button onclick="resetTimers()">Reset Lanes</button>
+            <label style="margin-left: 20px; margin-right: 10px;">Hide Timers:</label>
+            <label class="switch">
+                <input type="checkbox" id="myToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </section>
+   
+    <!-- Modal for managing waitlist -->
+    <div id="waitlistModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeWaitlist()">&times;</span>
+            <h2>Waitlist</h2>
+            
+            <!-- Waitlist entries-->
+            <ul id="waitlistContainer"></ul>
+
+            <!-- Input for new waitlist entry -->
+            <input type="text" id="waitlistName" placeholder="Enter name">
+            <input type="text" id="waitlistNote" placeholder="Note (optional)">
+            <button onclick="addToWaitlist()">Add</button>
+            <button onclick="serveNext()">Remove #1</button>
+
+            <!-- Dropdown to remove specific person -->
+            <div style="margin-top: 10px;">
+                <select id="removeNameSelect">
+                    <option value="">-- Remove Someone --</option>
+                </select>
+                <button onclick="removeByName()">Remove Selected</button>
+            </div>
+        </div>
+    </div>    
+    <script src="script.js"></script>
+</body>
+</html>
