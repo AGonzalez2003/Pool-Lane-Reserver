@@ -1,6 +1,6 @@
 # Pool Lane Reservation System
 
-A responsive system for **swimming pool staff** to manage lane reservations, timers, and waitlists.
+A responsive system for **swimming pool staff** to manage lane reservations, timers, and waitlists
 
 ---
 
@@ -25,8 +25,7 @@ A responsive system for **swimming pool staff** to manage lane reservations, tim
 **Responsive UI**  
 - Optimized for staff tablets or desktop screens
 - Clean, and color-coded lane status
-- Persistent lane status, waitlist, and admin settings saved using `localStorage`.
-
+- Persistent lane status, waitlist, and admin settings saved using `localStorage`
 
 ---
 
@@ -41,16 +40,16 @@ A responsive system for **swimming pool staff** to manage lane reservations, tim
 ## How to Use
 
 1. **Settings Page**: 
-   - Set number of lanes.
-   - Close lanes if needed.
-   - Adjust timer settings.
+   - Set number of lanes
+   - Close lanes if needed
+   - Adjust timer settings
 2. **Main Page**: 
-   - Click a lane to mark it as occupied or available.
-   - Watch the timers countdown automatically.
+   - Click a lane to mark it as occupied or available
+   - Watch the timers countdown automatically
 3. **Waitlist**: 
-   - Add, view, and remove swimmers from the waitlist.
+   - Add, view, and remove swimmers from the waitlist
 4. **Reset**: 
-   - Reset all lanes and timers quickly if needed.
+   - Reset all lanes and timers quickly if needed
 
 ---
 
