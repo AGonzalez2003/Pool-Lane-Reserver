@@ -25,6 +25,14 @@ function showSettingsPage() {
 
 //Updates the number of lanes and their initial states
 function updateLanes() {
+    
+    // First stop all existing lane timers
+    lanes.forEach(lane => {
+        if (lane.interval) {
+            clearInterval(lane.interval);
+        }
+    });
+    
     const numOfLanes = parseInt(document.getElementById("numberOfLanes").value) || 1;
     
     //Creates array of lane objects
