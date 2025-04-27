@@ -55,8 +55,3 @@ A responsive system for **swimming pool staff** to manage lane reservations, tim
 ## Deployment
 
 - **Hosted on Vercel:** https://pool-lane-reserver.vercel.app/
-
-- Save lane status and waitlist across page refreshes (using `localStorage`).
-- And More!!!
-
----
