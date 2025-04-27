@@ -25,6 +25,8 @@ A responsive system for **swimming pool staff** to manage lane reservations, tim
 **Responsive UI**  
 - Optimized for staff tablets or desktop screens
 - Clean, and color-coded lane status
+- Persistent lane status, waitlist, and admin settings saved using `localStorage`.
+
 
 ---
 
