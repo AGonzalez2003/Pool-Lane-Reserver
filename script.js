@@ -210,8 +210,11 @@ function applyTimerVisibility() {
     });
 }
 
-//Add listener so toggle works in real-time
-document.getElementById("myToggle").addEventListener("change", applyTimerVisibility);
+// Add listener so toggle works in real-time and save immediately
+document.getElementById("myToggle").addEventListener("change", () => {
+    applyTimerVisibility();
+    saveToLocalStorage();
+});
 
 /* ------------------ WAITLIST FUNCTIONALITY ------------------ */
 
@@ -288,6 +291,7 @@ function saveToLocalStorage() {
     localStorage.setItem('lanes', JSON.stringify(lanes));
     localStorage.setItem('waitlist', JSON.stringify(waitlist));
     localStorage.setItem('timeLimit', timeLimit);
+    localStorage.setItem('hideTimers', document.getElementById('myToggle').checked);
 }
 
 // Load lanes and waitlist from localStorage
@@ -295,6 +299,8 @@ function loadFromLocalStorage() {
     const savedLanes = JSON.parse(localStorage.getItem('lanes'));
     const savedWaitlist = JSON.parse(localStorage.getItem('waitlist'));
     const savedTimeLimit = parseInt(localStorage.getItem('timeLimit'));
+    const hideTimers = localStorage.getItem('hideTimers') === 'true';
+    document.getElementById('myToggle').checked = hideTimers;
 
     if (savedLanes) {
         lanes = savedLanes.map(lane => ({
