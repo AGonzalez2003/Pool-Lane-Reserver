@@ -7,6 +7,10 @@ let timeLimit = 1;
 //Array to store waitlist entries
 let waitlist = [];
 
+loadFromLocalStorage();
+renderLanes();
+renderClosedLanes();
+applyTimerVisibility();
 /* ------------------ PAGE NAVIGATION FUNCTIONS ------------------ */
 
 //Show main page (hides settings)
@@ -114,6 +118,7 @@ function toggleLane(index) {
     lanes[index].occupied = !lanes[index].occupied;
     renderLanes();
     applyTimerVisibility();
+    saveToLocalStorage();
 }
 
 //Starts countdown timer for a specific lane
@@ -171,6 +176,7 @@ function toggleClosedLane(index) {
     renderLanes();
     applyTimerVisibility();
     renderClosedLanes();
+    saveToLocalStorage();
 }
 
 //Reset all lanes to default (available, timer reset)
@@ -183,6 +189,7 @@ function resetTimers() {
 
     renderLanes();
     applyTimerVisibility();
+    saveToLocalStorage();
 }
 
 /* ------------------ TIMER VISIBILITY TOGGLE ------------------ */
@@ -251,6 +258,7 @@ function addToWaitlist() {
         nameInput.value = "";
         noteInput.value = "";
         renderWaitlist();
+        saveToLocalStorage();
     }
 }
 
@@ -261,6 +269,7 @@ function serveNext() {
         // remove first
         const served = waitlist.shift(); 
         renderWaitlist();
+        saveToLocalStorage();
     }
 }
 
@@ -269,4 +278,35 @@ function removeByName() {
     const selectedName = document.getElementById("removeNameSelect").value;
     waitlist = waitlist.filter(entry => entry.name !== selectedName);
     renderWaitlist();
+    saveToLocalStorage();
+}
+
+/* ------------------ LOCAL STORAGE ------------------ */
+
+// Save lanes and waitlist to localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('lanes', JSON.stringify(lanes));
+    localStorage.setItem('waitlist', JSON.stringify(waitlist));
+    localStorage.setItem('timeLimit', timeLimit);
+}
+
+// Load lanes and waitlist from localStorage
+function loadFromLocalStorage() {
+    const savedLanes = JSON.parse(localStorage.getItem('lanes'));
+    const savedWaitlist = JSON.parse(localStorage.getItem('waitlist'));
+    const savedTimeLimit = parseInt(localStorage.getItem('timeLimit'));
+
+    if (savedLanes) {
+        lanes = savedLanes.map(lane => ({
+            ...lane,
+            //Resets timers because intervals cant be saved
+            interval: null
+        }));
+    }
+    if (savedWaitlist) {
+        waitlist = savedWaitlist;
+    }
+    if (savedTimeLimit) {
+        timeLimit = savedTimeLimit;
+    }
 }
