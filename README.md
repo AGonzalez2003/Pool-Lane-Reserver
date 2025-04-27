@@ -54,7 +54,7 @@ A responsive system for **swimming pool staff** to manage lane reservations, tim
 
 ## Deployment
 
-- **Hosted on Vercel: pool-lane-reserver.vercel.app **
+- **Hosted on Vercel: https://pool-lane-reserver.vercel.app/ **
 
 ---
 
