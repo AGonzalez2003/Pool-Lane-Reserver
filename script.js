@@ -192,6 +192,14 @@ function applyTimerVisibility() {
     const hideTimers = document.getElementById("myToggle").checked;
     document.querySelectorAll(".timer").forEach(timer => {
         timer.classList.toggle("hidden", hideTimers);
+
+        // Center lane text if timers are hidden
+        const laneDiv = timer.parentElement; 
+        if (hideTimers) {
+            laneDiv.classList.add("centered");
+        } else {
+            laneDiv.classList.remove("centered");
+        }
     });
 }
 

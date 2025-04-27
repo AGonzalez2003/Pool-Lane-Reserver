@@ -54,6 +54,11 @@ button:hover {
     transition: background-color 0.3s;
 }
 
+/* Center lane name when timers are hidden */
+.lane.centered {
+    justify-content: center;
+}
+
 /* Red background if lane is occupied or closed */
 .lane.occupied, .lane.closed {
     background-color: red;
@@ -164,7 +169,7 @@ input:checked + .slider:before {
 
 /* Hidden timer class (when toggle is ON) */
 .timer.hidden {
-    visibility: hidden;
+    display: none;
 }
 
 /* WAITLIST BUTTON ICON */
