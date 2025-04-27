@@ -286,9 +286,14 @@ function removeByName() {
 
 /* ------------------ LOCAL STORAGE ------------------ */
 
-// Save lanes and waitlist to localStorage
 function saveToLocalStorage() {
-    localStorage.setItem('lanes', JSON.stringify(lanes));
+    // Before saving lanes, reset their timers to full
+    const lanesToSave = lanes.map(lane => ({
+        ...lane,
+        timer: timeLimit * 60
+    }));
+
+    localStorage.setItem('lanes', JSON.stringify(lanesToSave));
     localStorage.setItem('waitlist', JSON.stringify(waitlist));
     localStorage.setItem('timeLimit', timeLimit);
     localStorage.setItem('hideTimers', document.getElementById('myToggle').checked);
